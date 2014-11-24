@@ -1,5 +1,5 @@
 var React = require('react');
-var data  = require('./data.js');
+var data  = require('./data.full.js');
 
 var ReactDataTable = React.createClass({
   render: function() {
