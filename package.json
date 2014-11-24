@@ -1,0 +1,31 @@
+{
+  "name": "react-data-table",
+  "version": "0.1.0",
+  "description": "react-data-table ================",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yrezgui/react-data-table.git"
+  },
+  "author": "Yacine Rezgui <rezgui.y@gmail.com>",
+  "license": "Apache Licence v2",
+  "bugs": {
+    "url": "https://github.com/yrezgui/react-data-table/issues"
+  },
+  "homepage": "https://github.com/yrezgui/react-data-table",
+  "devDependencies": {
+    "browserify": "^6.3.2",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.1",
+    "reactify": "^0.17.0",
+    "vinyl-source-stream": "^1.0.0",
+    "vinyl-transform": "0.0.1"
+  },
+  "dependencies": {
+    "keymirror": "^0.1.0",
+    "react": "^0.12.1"
+  }
+}
