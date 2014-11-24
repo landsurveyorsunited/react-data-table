@@ -5,6 +5,15 @@ var options = {
 };
 
 var ReactDataTable = React.createClass({
+  getInitialState: function() {
+    return {
+      rowsToDisplay: {
+        toHideAbove: 0,
+        toRender: 0,
+        toHideBelow: 0
+      }
+    };
+  },
   render: function() {
     var createCell = function createCell (key, value) {
       return <td key={key}>{value}</td>;
