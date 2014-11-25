@@ -35,7 +35,7 @@ var ReactDataTable = React.createClass({
 
     var createTable = function createTable (table) {
       return (
-        <table>
+        <table ref="table">
 
           <thead>{
             Object.keys(table[0]).map(function (key) {
@@ -47,7 +47,7 @@ var ReactDataTable = React.createClass({
           </tbody>
         </table>
       );
-    }
+    }.bind(this);
 
     return createTable(this.props.data);
   }
