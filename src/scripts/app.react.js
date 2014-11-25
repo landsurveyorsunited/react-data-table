@@ -68,6 +68,16 @@ var ReactDataTable = React.createClass({
         toHideBelow: numRows - numRowsToRender - rowRenderOffset
       }
     })
+  },
+  componentDidMount: function(elem) {
+    this.decideRowsToDisplay();
+    window.addEventListener('scroll', function() {
+      // TODO: add rate limit
+      this.decideRowsToDisplay();
+    }.bind(this));
+  },
+  componentDidUnmount: function(elem) {
+    window.removeEventListener('scroll');
   }
 });
 
