@@ -33,7 +33,22 @@ var ReactDataTable = React.createClass({
       return <th key={key}>{key}</th>;
     };
 
-    var createTable = function createTable (table) {
+    var createTable = function createTable (origTable) {
+      if (this.isMounted()) {
+        var table = origTable.slice(this.state.rowsToDisplay.toHideAbove);
+        if (this.state.rowsToDisplay.toHideBelow) {
+          table = table.slice(0,-this.state.rowsToDisplay.toHideBelow);
+        }
+        var paddingTop = this.state.rowsToDisplay.toHideAbove * this.props.options.rowHeight;
+        var paddingBottom = this.state.rowsToDisplay.toHideBelow * this.props.options.rowHeight;
+        var tableElement = this.refs.table.getDOMNode();
+        tableElement.style.paddingTop = paddingTop +'px';
+        tableElement.style.paddingBottom = paddingBottom +'px'
+      } else {
+        var table = origTable.map(function () {
+          return {}
+        });
+      }
       return (
         <table ref="table">
 
