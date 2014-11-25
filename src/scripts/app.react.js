@@ -1,7 +1,7 @@
 var React = require('react');
 var data  = require('./data.full.js');
 var options = {
-  rowHeight: 40
+  rowHeight: 76
 };
 
 var ReactDataTable = React.createClass({
