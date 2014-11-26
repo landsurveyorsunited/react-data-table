@@ -6,6 +6,6 @@ td {
   border: 1px solid grey;
 }
 
-tr {
+tbody tr {
 	height: 74px;
 }
