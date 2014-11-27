@@ -5,7 +5,3 @@ body {
 td {
   border: 1px solid grey;
 }
-
-tbody tr {
-	height: 74px;
-}

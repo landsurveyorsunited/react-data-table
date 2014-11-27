@@ -42,7 +42,7 @@ var ReactDataTable = React.createClass({
   },
   createRow: function createRow (row) {
     return (
-      <tr key={row[this.props.options.rowIdProperty]}>{
+      <tr key={row[this.props.options.rowIdProperty]} style={{height: this.props.options.rowHeight}}>{
         Object.keys(row).map(function(key) {
           return this.createCell(key, row[key]);
         }.bind(this))
