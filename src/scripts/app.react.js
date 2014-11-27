@@ -71,7 +71,9 @@ var ReactDataTable = React.createClass({
     var numRows                   = this.props.data.length;
     var renderTop                 = Math.max(scrollOffsetFromTableTop - viewportHeight, 0);
     var rowRenderOffset           = Math.floor(renderTop / this.props.options.rowHeight);
-    var maxRowsToRender           = Math.ceil(viewportHeight * 3 / this.props.options.rowHeight);
+    // Repeat buffer at top and bottom (* 2) and add 1 for area within the viewport
+    var viewportHeightMultiplier  = (this.props.options.viewportVerticalRenderBuffer * 2) + 1;
+    var maxRowsToRender           = Math.ceil(viewportHeight * viewportHeightMultiplier / this.props.options.rowHeight);
     var numRowsToRender           = Math.min(numRows - rowRenderOffset, maxRowsToRender);
 
     this.setState({
