@@ -50,15 +50,14 @@ var ReactDataTable = React.createClass({
     return this.props.data.length * this.props.options.rowHeight;
   },
   decideRowsToDisplay: function () {
-    var scrollTop       = window.pageYOffset;
-    var viewportHeight  = window.innerHeight;
-    var numRows         = this.props.data.length;
-
-    // TODO: don't assume that the component is the only element in the page
-    var renderTop       = Math.max(scrollTop - viewportHeight, 0);
-    var rowRenderOffset = Math.floor(renderTop / this.props.options.rowHeight);
-    var maxRowsToRender = Math.ceil(viewportHeight * 3 / this.props.options.rowHeight);
-    var numRowsToRender = Math.min(numRows - rowRenderOffset, maxRowsToRender);
+    var tableElement              = this.getDOMNode();
+    var scrollOffsetFromTableTop  = -tableElement.getBoundingClientRect().top;
+    var viewportHeight            = window.innerHeight;
+    var numRows                   = this.props.data.length;
+    var renderTop                 = Math.max(scrollOffsetFromTableTop - viewportHeight, 0);
+    var rowRenderOffset           = Math.floor(renderTop / this.props.options.rowHeight);
+    var maxRowsToRender           = Math.ceil(viewportHeight * 3 / this.props.options.rowHeight);
+    var numRowsToRender           = Math.min(numRows - rowRenderOffset, maxRowsToRender);
 
     this.setState({
       rowsToDisplay: {
