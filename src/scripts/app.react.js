@@ -1,10 +1,16 @@
 var React = require('react');
 var data  = require('./data.full.js');
-var options = {
-  rowHeight: 76
-};
 
 var ReactDataTable = React.createClass({
+  getDefaultProps: function() {
+    return {
+      options: {
+        rowHeight: 60,
+        viewportVerticalRenderBuffer: 1,
+        rowIdProperty: '_id'
+      }
+    };
+  },
   getInitialState: function() {
     return {
       tableHeight: this.calculateTableHeight(),
@@ -103,4 +109,4 @@ var ReactDataTable = React.createClass({
   }
 });
 
-React.render(<ReactDataTable data={data} options={options} />, document.getElementById('app'));
+React.render(<ReactDataTable data={data} />, document.getElementById('app'));
