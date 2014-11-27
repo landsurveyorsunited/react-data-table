@@ -2,6 +2,15 @@ var React = require('react');
 var data  = require('./data.full.js');
 
 var ReactDataTable = React.createClass({
+  propTypes: {
+    data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+    options: React.PropTypes.shape({
+      rowHeight: React.PropTypes.number,
+      fixedColumnWidth: React.PropTypes.number,
+      viewportVerticalRenderBuffer: React.PropTypes.number,
+      rowIdProperty: React.PropTypes.string
+    }).isRequired
+  },
   getDefaultProps: function() {
     return {
       options: {
