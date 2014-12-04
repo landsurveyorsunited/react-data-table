@@ -1,6 +1,6 @@
 var React = require('react/addons');
 
-var ReactDataTable = React.createClass({
+var ReactDataTable = React.createClass({displayName: 'ReactDataTable',
   propTypes: {
     data: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
     options: React.PropTypes.shape({
@@ -37,19 +37,19 @@ var ReactDataTable = React.createClass({
     window.removeEventListener('scroll', this.decideRowsToDisplay);
   },
   createCell: function createCell (key, value) {
-    return <td key={key}>{value}</td>;
+    return React.createElement("td", {key: key}, value);
   },
   createRow: function createRow (row) {
     return (
-      <tr key={row[this.props.options.rowIdProperty]} style={{height: this.props.options.rowHeight}}>{
+      React.createElement("tr", {key: row[this.props.options.rowIdProperty], style: {height: this.props.options.rowHeight}}, 
         Object.keys(row).map(function(key) {
           return this.createCell(key, row[key]);
         }.bind(this))
-      }</tr>
+      )
     );
   },
   createHeaderCell: function createHeaderCell (key) {
-    return <th key={key}>{key}</th>;
+    return React.createElement("th", {key: key}, key);
   },
   filterRowsToBeRendered: function filterRowsToBeRendered (table) {
     table = this.props.data.slice(this.state.rowsToDisplay.toHideAbove);
@@ -85,7 +85,7 @@ var ReactDataTable = React.createClass({
   },
   render: function() {
     if (!this.isMounted()) {
-      return <div style={{height: this.state.tableHeight}} />
+      return React.createElement("div", {style: {height: this.state.tableHeight}})
     }
 
     var table                 = this.filterRowsToBeRendered(this.props.data);
@@ -97,16 +97,16 @@ var ReactDataTable = React.createClass({
     }
 
     return (
-      <div style={{height: this.state.tableHeight}}>
-        <table ref="table" style={tableStyle}>
-          <thead>{
+      React.createElement("div", {style: {height: this.state.tableHeight}}, 
+        React.createElement("table", {ref: "table", style: tableStyle}, 
+          React.createElement("thead", null, 
             Object.keys(table[0]).map(this.createHeaderCell)
-          }</thead>
-          <tbody>
-            {table.map(this.createRow)}
-          </tbody>
-        </table>
-      </div>
+          ), 
+          React.createElement("tbody", null, 
+            table.map(this.createRow)
+          )
+        )
+      )
     );
   }
 });
