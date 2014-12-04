@@ -2,7 +2,7 @@
   "name": "react-data-table",
   "version": "0.1.0",
   "description": "react-data-table ================",
-  "main": "index.js",
+  "main": "./src/ReactDataTable",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -24,8 +24,7 @@
     "vinyl-source-stream": "^1.0.0",
     "vinyl-transform": "0.0.1"
   },
-  "dependencies": {
-    "keymirror": "^0.1.0",
+  "peerDependencies": {
     "react": "^0.12.1"
   }
 }
