@@ -7,13 +7,13 @@ var reactify    = require('reactify');
 gulp.task('script', function() {
 
   var b = browserify({ debug: true });
-  b.add('./src/scripts/app.react.js');
+  b.add('./src/ReactDataTable.js');
 
   return b
     .transform(reactify)
     .bundle()
-    .pipe(source('app.js'))
-    .pipe(gulp.dest('dist/js'));
+    .pipe(source('ReactDataTable.js'))
+    .pipe(gulp.dest('lib'));
 });
 
 gulp.task('style', function () {
