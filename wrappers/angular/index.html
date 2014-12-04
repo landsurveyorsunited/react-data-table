@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Data Table</title>
+  </head>
+  <body ng-app="datagrid">
+    <section ng-controller="home">
+      Length: {{data.length}}
+      <hr>
+      <datagrid data="data"></datagrid>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="../../../dist/js/app.js"></script>
+    <script src="../../../src/scripts/data.fat.js"></script>
+    <script src="datagrid.js"></script>
+    <script src="controller.js"></script>
+  </body>
+</html>
