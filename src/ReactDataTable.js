@@ -64,6 +64,10 @@ var ReactDataTable = React.createClass({displayName: 'ReactDataTable',
     return this.props.data.length * this.props.options.rowHeight;
   },
   decideRowsToDisplay: function () {
+    if (!this.isMounted()) {
+      return;
+    }
+    
     var tableElement              = this.getDOMNode();
     var scrollOffsetFromTableTop  = -tableElement.getBoundingClientRect().top;
     var viewportHeight            = window.innerHeight;
