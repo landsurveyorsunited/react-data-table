@@ -7,7 +7,6 @@ var ReactDataTable = React.createClass({
       rowHeight: React.PropTypes.number,
       fixedColumnWidth: React.PropTypes.number,
       viewportVerticalRenderBuffer: React.PropTypes.number,
-      rowIdProperty: React.PropTypes.string
     }).isRequired
   },
   getDefaultProps: function() {
@@ -15,7 +14,6 @@ var ReactDataTable = React.createClass({
       options: {
         rowHeight: 60,
         viewportVerticalRenderBuffer: 1,
-        rowIdProperty: '_id'
       }
     };
   },
@@ -42,9 +40,12 @@ var ReactDataTable = React.createClass({
   createCell: function createCell (key, value) {
     return <td key={key}>{value}</td>;
   },
-  createRow: function createRow (row) {
+  createRow: function createRow (row, index) {
     return (
-      <tr key={row[this.props.options.rowIdProperty]} style={{height: this.props.options.rowHeight}}>{
+      <tr key={index + this.state.rowsToDisplay.toHideAbove} style={{
+        height: this.props.options.rowHeight,
+        'white-space': 'nowrap'
+      }}>{
         Object.keys(row).map(function(key) {
           return this.createCell(key, row[key]);
         }.bind(this))
