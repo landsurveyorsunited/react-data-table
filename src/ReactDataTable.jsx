@@ -29,6 +29,9 @@ var ReactDataTable = React.createClass({
       }
     };
   },
+  componentWillReceiveProps: function (nextProps) {
+    this.setState({tableHeight: calculateTableHeight(nextProps.data)});
+  },
   componentDidMount: function(elem) {
     this.decideRowsToDisplay();
     window.addEventListener('scroll', this.decideRowsToDisplay);
@@ -60,7 +63,10 @@ var ReactDataTable = React.createClass({
     
     return table;
   },
-  calculateTableHeight: function () {
+  calculateTableHeight: function (dataArray) {
+    if (dataArray) {
+      return dataArray.length * this.props.options.rowHeight;
+    }
     return this.props.data.length * this.props.options.rowHeight;
   },
   decideRowsToDisplay: function () {
