@@ -30,7 +30,7 @@ var ReactDataTable = React.createClass({
     };
   },
   componentWillReceiveProps: function (nextProps) {
-    this.setState({tableHeight: calculateTableHeight(nextProps.data)});
+    this.setState({tableHeight: this.calculateTableHeight(nextProps.data)});
   },
   componentDidMount: function(elem) {
     this.decideRowsToDisplay();
